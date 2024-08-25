@@ -27,8 +27,7 @@ async def parse_top_250_movies(page_text: str) -> dict[str, str]:
     soup = BeautifulSoup(page_text, "lxml")
     data = json.loads(soup.find("script", {"type": "application/ld+json"}).text)
     return {
-        item["item"]["name"]: item["item"]["url"]
-        for item in data["itemListElement"][:10]
+        item["item"]["name"]: item["item"]["url"] for item in data["itemListElement"]
     }
 
 
